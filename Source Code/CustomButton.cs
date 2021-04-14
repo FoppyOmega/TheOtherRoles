@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using Reactor.Extensions;
-using Reactor.Unstrip;
 using UnityEngine;
+
+using Palette = BLMBFIODBKL;
 
 public class CustomButton
 {
@@ -54,7 +54,7 @@ public class CustomButton
 
                 if (this.HasEffect && !this.isEffectActive) {
                     this.Timer = this.EffectDuration;
-                    killButtonManager.TimerText.Color = new Color(0F, 0.8F, 0F);
+                    killButtonManager.TimerText.color = new Color(0F, 0.8F, 0F);
                     this.isEffectActive = true;
                 }
             }
@@ -68,8 +68,6 @@ public class CustomButton
     public static void HudUpdate()
     {
         buttons.RemoveAll(item => item.killButtonManager == null);
-
-        if (MeetingHud.Instance || ExileController.Instance) return;
     
         for (int i = 0; i < buttons.Count; i++)
         {
@@ -127,7 +125,7 @@ public class CustomButton
 
     private void Update()
     {
-        if (PlayerControl.LocalPlayer.Data == null || !HasButton()) {
+        if (PlayerControl.LocalPlayer.PPMOEEPBHJO == null || MeetingHud.Instance || ExileController.Instance || !HasButton()) {
             setActive(false);
             return;
         }
@@ -141,10 +139,10 @@ public class CustomButton
             if (hudManager.KillButton != null) hudManager.KillButton.transform.localPosition = hudManager.UseButton.transform.localPosition - new Vector3(1.3f, 0, 0); // Align the kill button (because it's on another position depending on the screen resolution)
         }
         if (CouldUse()) {
-            killButtonManager.renderer.color = Palette.EnabledColor;
+            killButtonManager.renderer.color = Palette.BJENLBHMKAI;
             killButtonManager.renderer.material.SetFloat("_Desat", 0f);
         } else {
-            killButtonManager.renderer.color = Palette.DisabledColor;
+            killButtonManager.renderer.color = Palette.ILFJLECIGDB;
             killButtonManager.renderer.material.SetFloat("_Desat", 1f);
         }
 
@@ -157,7 +155,7 @@ public class CustomButton
         
         if (Timer <= 0 && HasEffect && isEffectActive) {
             isEffectActive = false;
-            killButtonManager.TimerText.Color = Palette.EnabledColor;
+            killButtonManager.TimerText.color = Palette.BJENLBHMKAI;
             OnEffectEnds();
         }
     
