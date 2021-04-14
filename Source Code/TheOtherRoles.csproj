@@ -51,7 +51,6 @@
         <EmbeddedResource Include="Resources\AdminTableIcon.png"/>
         <EmbeddedResource Include="Resources\SwapperCheck.png"/>
         <EmbeddedResource Include="Resources\SidekickButton.png"/>
-        <EmbeddedResource Include="Resources\CloakButton.png"/>
     </ItemGroup>
 
     <Target Name="Copy" AfterTargets="Reobfuscate">
